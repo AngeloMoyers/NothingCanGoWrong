@@ -561,8 +561,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1295129958}
   - component: {fileID: 1295129957}
+  - component: {fileID: 1295129959}
   m_Layer: 0
-  m_Name: TestObject
+  m_Name: ManagerContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -582,6 +583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BuildPanelObject: {fileID: 30962493}
   TestTrapData: {fileID: 11400000, guid: 915c14b3ec72c92488c9163c5e7800b4, type: 2}
+  TrapManager: {fileID: 1295129959}
 --- !u!4 &1295129958
 Transform:
   m_ObjectHideFlags: 0
@@ -597,6 +599,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1295129959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295129956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dccb171edda2de4db429a5fa9d37732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlacementGrid: {fileID: 1051072301}
 --- !u!1 &1396026802
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,7 +624,7 @@ GameObject:
   - component: {fileID: 1396026805}
   - component: {fileID: 1396026804}
   m_Layer: 0
-  m_Name: TrapTilemap
+  m_Name: TrapBlockTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -856,7 +871,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -2334,6 +2349,10 @@ PrefabInstance:
     - target: {fileID: 7435742455922079068, guid: 27cf316a36553c64a9f3e4bdada8d523, type: 3}
       propertyPath: m_Name
       value: TestCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 7435742455922079068, guid: 27cf316a36553c64a9f3e4bdada8d523, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

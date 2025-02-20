@@ -6,6 +6,7 @@ public class TestController : MonoBehaviour
 {
     [SerializeField] BuildPanel BuildPanelObject;
     [SerializeField] TrapObject TestTrapData;
+    [SerializeField] TrapPlacementManager TrapManager;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
@@ -15,6 +16,11 @@ public class TestController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             BuildPanelObject.RemoveTrap(TestTrapData);
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            TrapManager.BeginPlacement(TestTrapData, null);
         }
     }
 }

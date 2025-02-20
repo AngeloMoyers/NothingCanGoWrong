@@ -28,6 +28,7 @@ public class BuildPanel : MonoBehaviour
                 {
                     trapPanelGO = GameObject.Instantiate(TrapPanelPrefab, ContentContainer);
                     trapPanel = trapPanelGO.GetComponent<TrapPanel>();
+                    trapPanel.SetOwningBuildPanel(this);
 
                     TrapTypeCount.Add(data.GetName(), 1);
                     TrapTypeToPanel.Add(data.GetName(), trapPanelGO);

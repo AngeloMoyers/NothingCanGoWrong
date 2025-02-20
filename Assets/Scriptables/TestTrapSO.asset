@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d1f6c9be5fec494c964b73a8f24e770, type: 3}
-  m_Name: TestTrap
+  m_Name: TestTrapSO
   m_EditorClassIdentifier: 
   Name: Test
   Description: I'm a test trap
-  ObjectPrefab: {fileID: 0}
-  Icon: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  ObjectPrefab: {fileID: 3810489753149519197, guid: ebe6000a8f7e7e641913f848d0314d42, type: 3}
+  Icon: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  TileDimensions: {x: 2, y: 2}
