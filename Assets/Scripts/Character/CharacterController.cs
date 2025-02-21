@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
+    [SerializeField] Animator MyAnimator;
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float jumpForce = 10f;
     [SerializeField] float fallMultiplier = 2.5f;
@@ -26,6 +27,7 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        MyAnimator.SetBool("IsJumping", !isGrounded);
 
         float moveX = Input.GetAxis("Horizontal");
 
@@ -33,6 +35,7 @@ public class CharacterController : MonoBehaviour
 
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
+            MyAnimator.SetBool("IsJumping", true);
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
@@ -44,5 +47,7 @@ public class CharacterController : MonoBehaviour
         {
             rb.gravityScale = originalGravityScale;
         }
+
+        MyAnimator.SetFloat("Speed",Mathf.Abs( rb.velocity.x));
     }
 }
