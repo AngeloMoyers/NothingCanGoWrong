@@ -11,10 +11,21 @@ public class CharacterController : MonoBehaviour
     [SerializeField] float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
 
+    private CharacterLoopManager LoopMan;
+
     private Rigidbody2D rb;
     private bool isGrounded;
     private Transform groundCheck;
     private float originalGravityScale;
+
+    private bool IsPlaying = false;
+
+    public void SetPlaying(bool newPlaying ) { IsPlaying = newPlaying; }
+
+    private void Awake()
+    {
+        LoopMan = GameObject.FindObjectOfType<CharacterLoopManager>();
+    }
 
     void Start()
     {
@@ -26,6 +37,11 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
+        if ( !IsPlaying)
+        {
+            return;
+        }
+
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
         MyAnimator.SetBool("IsJumping", !isGrounded);
 
@@ -49,5 +65,11 @@ public class CharacterController : MonoBehaviour
         }
 
         MyAnimator.SetFloat("Speed",Mathf.Abs( rb.velocity.x));
+    }
+
+    public void Die()
+    {
+        //Do some fancy anim?
+        LoopMan.Reset();
     }
 }

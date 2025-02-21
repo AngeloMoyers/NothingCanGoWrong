@@ -11,6 +11,13 @@ public class TrapPlacementManager : MonoBehaviour
 
     private bool IsPlacing = false;
     private Action CurrentCompletePlacementCallback;
+
+    private bool IsBuildModeActive = false;
+    public void SetBuildModeActive(bool active)
+    {
+        IsBuildModeActive = active;
+    }    
+
     public void BeginPlacement(TrapObject trapData, Action CompletePlacementCallback)
     {
         if (GhostGO != null)
@@ -98,6 +105,12 @@ public class TrapPlacementManager : MonoBehaviour
 
     public void Update()
     {
+        if (!IsBuildModeActive)
+        {
+            CancelPlacement();
+            return;
+        }
+
         UpdatePlacement();
 
         if (Input.GetMouseButton(0))

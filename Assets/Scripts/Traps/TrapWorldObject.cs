@@ -16,9 +16,12 @@ public class TrapWorldObject : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            OnPlayerOverlap();
+            OnPlayerOverlap(collision.gameObject);
         }
     }
 
-    protected virtual void OnPlayerOverlap() { }
+    protected virtual void OnPlayerOverlap(GameObject player)  
+    {
+        player.GetComponent<CharacterController>().Die();
+    }
 }

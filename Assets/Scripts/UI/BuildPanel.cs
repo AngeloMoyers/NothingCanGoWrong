@@ -10,6 +10,12 @@ public class BuildPanel : MonoBehaviour
     Dictionary<string, int> TrapTypeCount;
     Dictionary<string, GameObject> TrapTypeToPanel;
 
+    private bool IsBuildModeActive = false;
+    public void SetBuildModeActive(bool active)
+    {
+        IsBuildModeActive = active;
+    }
+
     private void Awake()
     {
         TrapTypeCount = new Dictionary<string, int>();

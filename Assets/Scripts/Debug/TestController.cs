@@ -7,6 +7,7 @@ public class TestController : MonoBehaviour
     [SerializeField] BuildPanel BuildPanelObject;
     [SerializeField] TrapObject TestTrapData;
     [SerializeField] TrapPlacementManager TrapManager;
+    [SerializeField] CharacterLoopManager LoopMan;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
@@ -21,6 +22,19 @@ public class TestController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G))
         {
             TrapManager.BeginPlacement(TestTrapData, null);
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            LoopMan.StartPlaying();
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoopMan.StopPlaying();
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            LoopMan.Reset();
         }
     }
 }
