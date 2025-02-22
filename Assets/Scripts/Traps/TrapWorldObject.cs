@@ -22,6 +22,6 @@ public class TrapWorldObject : MonoBehaviour
 
     protected virtual void OnPlayerOverlap(GameObject player)  
     {
-        player.GetComponent<CharacterController>().Die();
+
     }
 }

@@ -34,7 +34,7 @@ public class TrapPlacementManager : MonoBehaviour
         GhostGO.transform.localScale = originalGameObjectPrefab.transform.localScale;
         GhostGO.transform.rotation = originalGameObjectPrefab.transform.rotation;
 
-        SpriteRenderer originalSpriteRenderer = originalGameObjectPrefab.GetComponent<SpriteRenderer>();
+        SpriteRenderer originalSpriteRenderer = originalGameObjectPrefab.GetComponentInChildren<SpriteRenderer>();
         SpriteRenderer ghostRenderer = GhostGO.AddComponent<SpriteRenderer>();
         ghostRenderer.sprite = originalSpriteRenderer.sprite;
         ghostRenderer.material = originalSpriteRenderer.sharedMaterial;
