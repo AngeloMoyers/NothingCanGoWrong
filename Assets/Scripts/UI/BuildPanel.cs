@@ -7,6 +7,7 @@ public class BuildPanel : MonoBehaviour
     [SerializeField] GameObject TrapPanelPrefab;
     [SerializeField] Transform ContentContainer;
 
+
     Dictionary<string, int> TrapTypeCount;
     Dictionary<string, GameObject> TrapTypeToPanel;
 
