@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d1f6c9be5fec494c964b73a8f24e770, type: 3}
   m_Name: Spike Trap
   m_EditorClassIdentifier: 
-  Name: 
-  Description: 
-  ObjectPrefab: {fileID: 0}
-  Icon: {fileID: 0}
-  TileDimensions: {x: 0, y: 0}
+  Name: Spike
+  Description: Spike Trap
+  ObjectPrefab: {fileID: 1266561316763314007, guid: 32e8b8a2046b24892a3fe95f611980b0, type: 3}
+  Icon: {fileID: -408462118, guid: 4d62175d2c8324ce68e3198ddb356076, type: 3}
+  TileDimensions: {x: 1, y: 1}
