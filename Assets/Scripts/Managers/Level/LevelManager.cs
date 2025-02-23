@@ -29,7 +29,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this);
-        LoopMan.StopPlaying();
+        LoopMan.BeginLevel(LevelDataDict[SGameManager.CurrentLevel].GetTrapsHacksUnlockedFor());
         BuildMan.LoadLevelData(LevelDataDict[SGameManager.CurrentLevel]);
     }
 
@@ -41,7 +41,7 @@ public class LevelManager : MonoBehaviour
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        LoopMan.StopPlaying();
+        LoopMan.BeginLevel(LevelDataDict[SGameManager.CurrentLevel].GetTrapsHacksUnlockedFor());
         BuildMan.LoadLevelData(LevelDataDict[SGameManager.CurrentLevel]);
     }
 }

@@ -8,6 +8,11 @@ public class TestController : MonoBehaviour
     [SerializeField] TrapObject TestTrapData;
     [SerializeField] TrapPlacementManager TrapManager;
     [SerializeField] CharacterLoopManager LoopMan;
+    CharacterController Char;
+
+    private void Awake()
+    {
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
@@ -35,6 +40,13 @@ public class TestController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             LoopMan.Reset();
+        }
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            Char = GameObject.FindObjectOfType<CharacterController>();
+
+            Char.TestDash();
         }
     }
 }

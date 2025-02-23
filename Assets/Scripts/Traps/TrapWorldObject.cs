@@ -7,6 +7,8 @@ public class TrapWorldObject : MonoBehaviour
     [SerializeField] TrapObject TrapData;
     Collider2D Trigger;
 
+    public TrapType GetTrapType() { return TrapData.GetTrapType(); }
+
     private void Awake()
     {
         Trigger = GetComponent<Collider2D>();
@@ -24,4 +26,7 @@ public class TrapWorldObject : MonoBehaviour
     {
 
     }
+
+    public virtual void Activate(Collider2D collider)
+    { }
 }
