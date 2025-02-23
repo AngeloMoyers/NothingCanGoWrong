@@ -73,7 +73,7 @@ public class CharacterController : MonoBehaviour
         rb.velocity = Vector3.zero; // Stop moving
 
         MyAnimator.SetBool("IsDead", true);
-        //PlayerWon(); //Remove after animation event is set up
+        StartCoroutine(CompleteDeath());
     }
 
     public void CharacterWon()
@@ -84,5 +84,12 @@ public class CharacterController : MonoBehaviour
     public void OnDeathComplete()
     {
         LoopMan.PlayerWon();
+    }
+
+    IEnumerator CompleteDeath()
+    {
+        yield return new WaitForSeconds(0.28f);
+
+        OnDeathComplete();
     }
 }
