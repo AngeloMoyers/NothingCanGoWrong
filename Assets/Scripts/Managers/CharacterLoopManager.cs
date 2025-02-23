@@ -5,17 +5,16 @@ using UnityEngine;
 public class CharacterLoopManager : MonoBehaviour
 {
     [SerializeField] GameObject CharacterPrefab;
-    [SerializeField] Transform SpawnPoint;
+    Transform SpawnPoint;
     [SerializeField] BuildManager BuildMan;
+    [SerializeField] UIManager UIMan;
 
     private GameObject Character;
     private CharacterController CharacterControl;
 
     bool IsPlaying = false;
-    private void Start()
-    {
-        StopPlaying();
-    }
+
+
     public void Reset()
     {
         if (Character)
@@ -24,6 +23,8 @@ public class CharacterLoopManager : MonoBehaviour
         }
         else
         {
+            SpawnPoint = GameObject.FindObjectOfType<SpawnPoint>().transform;
+
             Character = GameObject.Instantiate(CharacterPrefab, SpawnPoint.transform.position, Quaternion.identity);
             CharacterControl = Character.GetComponent<CharacterController>();
         }
@@ -33,6 +34,7 @@ public class CharacterLoopManager : MonoBehaviour
     {
         //enter build mode
         Reset();
+        UIMan.CloseWinScreen();
         IsPlaying = false;
         if (CharacterControl != null)
         {
@@ -69,6 +71,8 @@ public class CharacterLoopManager : MonoBehaviour
 
     public void CharacterWon()
     {
-        StopPlaying();
+        UIMan.ShowWinScreen();
+        BuildMan.SetBuildModeActive(false);
+        CharacterControl.SetPlaying(false);
     }    
 }
