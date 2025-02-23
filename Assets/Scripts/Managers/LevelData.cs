@@ -13,6 +13,8 @@ public struct TrapToCount
 public class LevelData : ScriptableObject
 {
     [SerializeField] List<TrapToCount> TrapsAvailable;
+    [SerializeField] List<TrapType> TrapsHacksUnlockedFor = new List<TrapType>();
 
     public List<TrapToCount> GetTrapsAvailable() {  return TrapsAvailable; }
+    public List<TrapType> GetTrapsHacksUnlockedFor() { return TrapsHacksUnlockedFor; }
 }

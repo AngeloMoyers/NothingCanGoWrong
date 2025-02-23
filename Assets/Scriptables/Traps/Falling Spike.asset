@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d1f6c9be5fec494c964b73a8f24e770, type: 3}
   m_Name: Falling Spike
   m_EditorClassIdentifier: 
-  Name: Falling Spike
+  Type: 1
+  Name: Falling Spikes
   Description: Falls on players
   ObjectPrefab: {fileID: 1736949261107821022, guid: fa81db5b26b0645b495ccd4d1cc92a76, type: 3}
   Icon: {fileID: 282636052, guid: 7a5b4557e3d0d4e29a0163efe9b116e6, type: 3}
-  TileDimensions: {x: 0, y: 0}
+  TileDimensions: {x: 1, y: 1}

@@ -105,7 +105,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6d20239ebb312a74ab159459295c114b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -114,7 +114,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &7302140827661684872
 CapsuleCollider2D:
@@ -165,9 +165,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyAnimator: {fileID: 8760878678687373719}
   moveSpeed: 8
-  jumpForce: 12.5
+  jumpForce: 10
   fallMultiplier: 2.5
   groundCheckRadius: 0.2
+  MaxInvulnerableTime: 1
+  TeleportDashSpeed: 30
+  TeleportDuration: 0.13
   groundLayer:
     serializedVersion: 2
     m_Bits: 256

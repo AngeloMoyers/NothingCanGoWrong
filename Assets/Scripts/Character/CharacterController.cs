@@ -9,6 +9,11 @@ public class CharacterController : MonoBehaviour
     [SerializeField] float jumpForce = 10f;
     [SerializeField] float fallMultiplier = 2.5f;
     [SerializeField] float groundCheckRadius = 0.2f;
+    [SerializeField] float MaxInvulnerableTime = 1.0f;
+
+    [Header("Hacks")]
+    [SerializeField] float TeleportDashSpeed = 15.0f;
+    [SerializeField] float TeleportDuration = 0.1f;
     public LayerMask groundLayer;
 
     private CharacterLoopManager LoopMan;
@@ -19,6 +24,11 @@ public class CharacterController : MonoBehaviour
     private float originalGravityScale;
 
     private bool IsPlaying = false;
+    private bool IsInvulnerable = false;
+    private bool IsDashing = false;
+    private float InvulnTimer = 0.0f;
+
+    private List<TrapType> UnlockedHacks = new List<TrapType>();
 
     public void SetPlaying(bool newPlaying ) { IsPlaying = newPlaying; }
 
@@ -37,6 +47,17 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
+        if (IsInvulnerable)
+        {
+            InvulnTimer += Time.deltaTime;
+            if (InvulnTimer > MaxInvulnerableTime)
+            {
+                IsInvulnerable = false;
+                InvulnTimer = 0.0f;
+                //end invuln anim
+            }
+        }
+
         if ( !IsPlaying)
         {
             return;
@@ -45,14 +66,17 @@ public class CharacterController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
         MyAnimator.SetBool("IsJumping", !isGrounded);
 
-        float moveX = Input.GetAxis("Horizontal");
-
-        rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
-
-        if (isGrounded && Input.GetButtonDown("Jump"))
+        if (!IsDashing)
         {
-            MyAnimator.SetBool("IsJumping", true);
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            float moveX = Input.GetAxis("Horizontal");
+
+            rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
+
+            if (isGrounded && Input.GetButtonDown("Jump"))
+            {
+                MyAnimator.SetBool("IsJumping", true);
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            }
         }
 
         if (rb.velocity.y < 0)
@@ -69,6 +93,7 @@ public class CharacterController : MonoBehaviour
 
     public void Die()
     {
+        if (IsInvulnerable) return; //This may be problematic
         IsPlaying = false;
         rb.velocity = Vector3.zero; // Stop moving
 
@@ -91,5 +116,55 @@ public class CharacterController : MonoBehaviour
         yield return new WaitForSeconds(0.28f);
 
         OnDeathComplete();
+    }
+
+    public void OnTrapTriggerEnter(TrapType type)
+    {
+        if (!UnlockedHacks.Contains(type)) return;
+        switch (type)
+        {
+            case TrapType.kSpike:
+                {
+                    //Invuln
+                    IsInvulnerable = true;
+                    //invuln animation?
+                    break;
+                }
+            case TrapType.kFallingSpike:
+                {
+                    //Teleport forward
+                    StartCoroutine(Dash());
+
+                    break;
+                }
+        }
+    }
+
+    public void UnlockHack(TrapType type)
+    {
+        UnlockedHacks.Add(type);
+    }
+
+    IEnumerator Dash()
+    {
+        IsDashing = true;
+        float dir = 0.0f;
+        if (rb.velocity.x > 0)
+        {
+            dir = 1f;
+        }
+        else if (rb.velocity.x < 0)
+        {
+            dir = -1f;
+        }
+        rb.velocity = new Vector2(dir * TeleportDashSpeed, rb.velocity.y);
+
+        yield return new WaitForSeconds(TeleportDuration);
+        IsDashing = false;
+    }
+
+    public void TestDash()
+    {
+        StartCoroutine(Dash());
     }
 }
