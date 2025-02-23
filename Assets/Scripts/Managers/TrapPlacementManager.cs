@@ -133,4 +133,9 @@ public class TrapPlacementManager : MonoBehaviour
             CancelPlacement();
         }
     }
+
+    public void BeginLevel()
+    {
+        PlacementGrid = GameObject.FindObjectOfType<Grid>();
+    }
 }

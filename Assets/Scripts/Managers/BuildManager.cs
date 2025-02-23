@@ -41,4 +41,9 @@ public class BuildManager : MonoBehaviour
             }
         }
     }
+
+    public void BeginLevel()
+    {
+        TrapMan.BeginLevel();
+    }
 }

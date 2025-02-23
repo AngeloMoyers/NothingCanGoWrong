@@ -93,5 +93,6 @@ public class CharacterLoopManager : MonoBehaviour
     {
         CurrentLevelHacks = currentLevelHacks;
         StopPlaying();
+        BuildMan.BeginLevel();
     }
 }

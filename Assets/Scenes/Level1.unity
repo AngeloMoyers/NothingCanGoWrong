@@ -738,6 +738,14 @@ MonoBehaviour:
     LevelData: {fileID: 11400000, guid: 07b780bb43cb0fe45855173c96ab77d0, type: 2}
   - Level: 2
     LevelData: {fileID: 11400000, guid: ce0ab7d321a26b3428686a38c4ca286e, type: 2}
+  - Level: 3
+    LevelData: {fileID: 11400000, guid: 15f5f469ea03845389798814e45fc8dd, type: 2}
+  - Level: 4
+    LevelData: {fileID: 11400000, guid: 8bca340915b064273a626a83364a229c, type: 2}
+  - Level: 5
+    LevelData: {fileID: 11400000, guid: 40843ce2105f99145b8bf9df7c55421f, type: 2}
+  - Level: 6
+    LevelData: {fileID: 11400000, guid: 4b5692f04e489914ab0e7c89d670452e, type: 2}
 --- !u!1 &1387549025
 GameObject:
   m_ObjectHideFlags: 0
@@ -3190,28 +3198,8 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5761045977535524756, guid: c2d814ce18cec4aabaa93a5263fc85fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1713468663}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1675368121231122661, guid: c2d814ce18cec4aabaa93a5263fc85fe, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5790840738347177563}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2d814ce18cec4aabaa93a5263fc85fe, type: 3}
---- !u!1 &5790840738347177562 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1675368121231122661, guid: c2d814ce18cec4aabaa93a5263fc85fe, type: 3}
-  m_PrefabInstance: {fileID: 5790840738347177561}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5790840738347177563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5790840738347177562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38c82a3d1fca8224782c81723359e14a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
