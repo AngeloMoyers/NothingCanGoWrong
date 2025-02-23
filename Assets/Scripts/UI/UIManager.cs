@@ -16,6 +16,11 @@ public class UIManager : MonoBehaviour
         WinScreen.SetActive(true);
     }
 
+    public void CloseWinScreen()
+    {
+        WinScreen.SetActive(false);
+    }
+
     public void NextLevel()
     {
         //TODO

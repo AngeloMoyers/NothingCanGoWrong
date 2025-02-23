@@ -7,7 +7,6 @@ public class BuildManager : MonoBehaviour
     [SerializeField] GameObject BuildModeUI;
     [SerializeField] TrapPlacementManager TrapMan;
     [SerializeField] BuildPanel BuildPan;
-    [SerializeField] LevelData LevelStartInfo;
 
     private BuildPanel BuildPanelScript;
 
@@ -24,11 +23,16 @@ public class BuildManager : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < LevelStartInfo.GetTrapsAvailable().Count; i++)
+        
+    }
+
+    public void LoadLevelData(LevelData data)
+    {
+        for (int i = 0; i < data.GetTrapsAvailable().Count; i++)
         {
-            for (int j = 0; j < LevelStartInfo.GetTrapsAvailable()[i].Count; j++)
+            for (int j = 0; j < data.GetTrapsAvailable()[i].Count; j++)
             {
-                BuildPan.AddTrapPanel(LevelStartInfo.GetTrapsAvailable()[i].Trap);
+                BuildPan.AddTrapPanel(data.GetTrapsAvailable()[i].Trap);
             }
         }
     }
