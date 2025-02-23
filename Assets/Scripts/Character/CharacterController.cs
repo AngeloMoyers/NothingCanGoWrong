@@ -32,6 +32,9 @@ public class CharacterController : MonoBehaviour
 
     public void SetPlaying(bool newPlaying ) { IsPlaying = newPlaying; }
 
+    private Color StartColor;
+    private Vector2 MoveInput;
+
     private void Awake()
     {
         LoopMan = GameObject.FindObjectOfType<CharacterLoopManager>();
@@ -47,6 +50,7 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
+        MyAnimator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
         if (IsInvulnerable)
         {
             InvulnTimer += Time.deltaTime;
@@ -54,12 +58,13 @@ public class CharacterController : MonoBehaviour
             {
                 IsInvulnerable = false;
                 InvulnTimer = 0.0f;
-                //end invuln anim
+                GetComponent<SpriteRenderer>().color = StartColor;
             }
         }
 
         if ( !IsPlaying)
         {
+            rb.velocity = Vector2.zero;
             return;
         }
 
@@ -68,7 +73,8 @@ public class CharacterController : MonoBehaviour
 
         if (!IsDashing)
         {
-            float moveX = Input.GetAxis("Horizontal");
+            //float moveX = Input.GetAxis("Horizontal");
+            float moveX = MoveInput.x;
 
             rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
 
@@ -87,8 +93,11 @@ public class CharacterController : MonoBehaviour
         {
             rb.gravityScale = originalGravityScale;
         }
+    }
 
-        MyAnimator.SetFloat("Speed",Mathf.Abs( rb.velocity.x));
+    public void SetMoveInput(Vector2 input)
+    {
+        MoveInput = input;
     }
 
     public void Die()
@@ -127,7 +136,9 @@ public class CharacterController : MonoBehaviour
                 {
                     //Invuln
                     IsInvulnerable = true;
-                    //invuln animation?
+                    StartColor = GetComponent<SpriteRenderer>().color;
+                    GetComponent<SpriteRenderer>().color = new Color(StartColor.r, StartColor.g, StartColor.b, 100f/255f);
+
                     break;
                 }
             case TrapType.kFallingSpike:
