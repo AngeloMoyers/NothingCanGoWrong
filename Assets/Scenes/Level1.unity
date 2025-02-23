@@ -672,6 +672,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlacementGrid: {fileID: 1051072301}
+  UIMan: {fileID: 1295129962}
+  BuildMan: {fileID: 1295129960}
 --- !u!114 &1295129960
 MonoBehaviour:
   m_ObjectHideFlags: 0
