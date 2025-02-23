@@ -606,6 +606,7 @@ GameObject:
   - component: {fileID: 1295129959}
   - component: {fileID: 1295129960}
   - component: {fileID: 1295129961}
+  - component: {fileID: 1295129962}
   m_Layer: 0
   m_Name: ManagerContainer
   m_TagString: Untagged
@@ -688,6 +689,20 @@ MonoBehaviour:
   CharacterPrefab: {fileID: 1843794297451278387, guid: 8f271715a64e6464eaad8f1e100afb13, type: 3}
   SpawnPoint: {fileID: 699049316}
   BuildMan: {fileID: 1295129960}
+  UIMan: {fileID: 1295129962}
+--- !u!114 &1295129962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295129956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f127bb36f3ff604199e10b7c3612fc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WinScreen: {fileID: 1566569789}
 --- !u!1 &1387549025
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,7 +970,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1566569790
 RectTransform:
   m_ObjectHideFlags: 0

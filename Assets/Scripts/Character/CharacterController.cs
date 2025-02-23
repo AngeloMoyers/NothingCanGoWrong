@@ -69,7 +69,12 @@ public class CharacterController : MonoBehaviour
 
     public void Die()
     {
-        //Do some fancy anim?
-        LoopMan.Reset();
+        MyAnimator.SetBool("IsDead", true);
+        CharacterWon(); //Remove after animation event is set up
+    }
+
+    public void CharacterWon()
+    {
+        LoopMan.CharacterWon();
     }
 }

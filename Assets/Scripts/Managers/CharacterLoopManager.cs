@@ -7,6 +7,7 @@ public class CharacterLoopManager : MonoBehaviour
     [SerializeField] GameObject CharacterPrefab;
     [SerializeField] Transform SpawnPoint;
     [SerializeField] BuildManager BuildMan;
+    [SerializeField] UIManager UIMan;
 
     private GameObject Character;
     private CharacterController CharacterControl;
@@ -69,6 +70,8 @@ public class CharacterLoopManager : MonoBehaviour
 
     public void CharacterWon()
     {
-        StopPlaying();
+        UIMan.ShowWinScreen();
+        BuildMan.SetBuildModeActive(false);
+        CharacterControl.SetPlaying(false);
     }    
 }
