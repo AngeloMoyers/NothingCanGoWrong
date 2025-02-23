@@ -6,11 +6,7 @@ using UnityEngine;
 public class TrapPlacementManager : MonoBehaviour
 {
     [SerializeField] Grid PlacementGrid;
-    [SerializeField] UIManager UIMan;
-    [SerializeField] BuildManager BuildMan;
-
     GameObject GhostGO;
-    Vector3 GhostOffset;
     TrapObject CurrentPlacementTrapData;
 
     private bool IsPlacing = false;
@@ -24,7 +20,6 @@ public class TrapPlacementManager : MonoBehaviour
 
     public void BeginPlacement(TrapObject trapData, Action CompletePlacementCallback)
     {
-        BuildMan.SetBuildPanelShowing(false);
         if (GhostGO != null)
         {
             Destroy(GhostGO);
@@ -38,7 +33,6 @@ public class TrapPlacementManager : MonoBehaviour
         GhostGO.transform.position = originalGameObjectPrefab.transform.position;
         GhostGO.transform.localScale = originalGameObjectPrefab.transform.localScale;
         GhostGO.transform.rotation = originalGameObjectPrefab.transform.rotation;
-        GhostOffset = originalGameObjectPrefab.GetComponentInChildren<SpriteRenderer>().transform.localPosition;
 
         SpriteRenderer originalSpriteRenderer = originalGameObjectPrefab.GetComponentInChildren<SpriteRenderer>();
         SpriteRenderer ghostRenderer = GhostGO.AddComponent<SpriteRenderer>();
@@ -48,7 +42,7 @@ public class TrapPlacementManager : MonoBehaviour
 
         GhostGO.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         GhostGO.transform.position = new Vector3(GhostGO.transform.position.x, GhostGO.transform.position.y, -1);
-        GhostGO.transform.position += GhostOffset;
+
         if (GhostGO)
         {
             IsPlacing = true;
@@ -76,18 +70,15 @@ public class TrapPlacementManager : MonoBehaviour
             }
 
             GhostGO.transform.position = new Vector3(xPos, yPos, -1);
-            GhostGO.transform.position += GhostOffset;
         }
     }
 
     //TODO: Allow removal, Check for valid placement against trap block tilemap
     public void CompletePlacement()
     {
-        if (IsBuildModeActive)
-            BuildMan.SetBuildPanelShowing(true);
         if (CurrentPlacementTrapData && GhostGO != null && IsPlacing)
         {
-            GameObject.Instantiate(CurrentPlacementTrapData.GetObjectPrefab(), GhostGO.transform.position - GhostOffset, GhostGO.transform.rotation);
+            GameObject.Instantiate(CurrentPlacementTrapData.GetObjectPrefab(), GhostGO.transform.position, GhostGO.transform.rotation);
             if (CurrentCompletePlacementCallback != null)
                 CurrentCompletePlacementCallback.Invoke();
 
@@ -102,8 +93,6 @@ public class TrapPlacementManager : MonoBehaviour
 
     public void CancelPlacement()
     {
-        if (IsBuildModeActive)
-            BuildMan.SetBuildPanelShowing(true);
         if (CurrentPlacementTrapData && GhostGO != null && IsPlacing)
         {
             Destroy(GhostGO);

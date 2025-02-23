@@ -35,25 +35,7 @@ public class TrapPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (Icon)
         {
             Icon.sprite = data.GetIcon();
-            RectTransform rt = Icon.transform as RectTransform;
-            Vector2 size = new Vector2(data.GetIcon().textureRect.width, data.GetIcon().textureRect.height);
-
-            if (size.x > size.y)
-            {
-                float ratio = size.y/size.x;
-                size.x /= (size.x / 64);
-                size.y = ratio * size.x;
-            }
-            else if (size.y > size.x)
-            {
-                float ratio = size.x / size.y;
-                size.y /= (size.y / 64);
-                size.x = ratio * size.y;
-            }
-
-            rt.sizeDelta = size;
         }
-
         SetCount(1);
 
         PopupInfoPanelObject = GameObject.Instantiate(PopupInfoPanelPrefab, transform);

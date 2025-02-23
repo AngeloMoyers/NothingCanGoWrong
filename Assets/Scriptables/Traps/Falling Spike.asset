@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Falling Spike
   Description: Falls on players
-  ObjectPrefab: {fileID: 1736949261107821022, guid: fa81db5b26b0645b495ccd4d1cc92a76, type: 3}
+  ObjectPrefab: {fileID: 0}
   Icon: {fileID: 282636052, guid: 7a5b4557e3d0d4e29a0163efe9b116e6, type: 3}
   TileDimensions: {x: 0, y: 0}

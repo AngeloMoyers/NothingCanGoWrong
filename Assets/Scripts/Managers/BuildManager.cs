@@ -21,11 +21,6 @@ public class BuildManager : MonoBehaviour
         }
     }
 
-    public void SetBuildPanelShowing(bool show)
-    {
-        BuildModeUI.SetActive(show);
-    }
-
     private void Start()
     {
         
