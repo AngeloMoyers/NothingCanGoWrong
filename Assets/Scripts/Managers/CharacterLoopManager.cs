@@ -69,10 +69,15 @@ public class CharacterLoopManager : MonoBehaviour
             StartPlaying();
     }
 
-    public void CharacterWon()
+    public void PlayerWon()
     {
         UIMan.ShowWinScreen();
         BuildMan.SetBuildModeActive(false);
         CharacterControl.SetPlaying(false);
+    }
+
+    public void CharacterWon()
+    {
+        Reset();
     }    
 }
