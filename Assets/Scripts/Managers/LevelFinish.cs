@@ -14,8 +14,6 @@ public class LevelFinish : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            Debug.Log("Character won!");
-        
             LoopMan.CharacterWon();
         }
     }
