@@ -69,6 +69,9 @@ public class CharacterController : MonoBehaviour
 
     public void Die()
     {
+        IsPlaying = false;
+        rb.velocity = Vector3.zero; // Stop moving
+
         MyAnimator.SetBool("IsDead", true);
         CharacterWon(); //Remove after animation event is set up
     }

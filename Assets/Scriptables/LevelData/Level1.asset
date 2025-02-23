@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Level1
   m_EditorClassIdentifier: 
   TrapsAvailable:
-  - Trap: {fileID: 11400000, guid: 5925408a5d3b0a247af710acd77fa603, type: 2}
+  - Trap: {fileID: 11400000, guid: ffe8dd07e85a24e4dba8238faea91548, type: 2}
     Count: 2
